@@ -8,9 +8,9 @@
 <body>
 	<?php
 		$servername = "localhost";
-		$username = "shoppingList";
-		$password = "shopping";
-		$dbname = "shoppinglist";
+		$username = "pwah";
+		$password = "mysql";
+		$dbname = "personal-web-account-hub";
 		$html = "
 			<div class='form'>
 				<form action='addToList.php' method='POST'>
@@ -38,19 +38,18 @@
 		}
 
 		//CRUD
-		$sqli = "SELECT * FROM list";
+		$sqli = "SELECT * FROM shoppingList";
 		$result = $conn->query($sqli);
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_assoc()) {
-				echo "&centerdot; item: " . $row["item"] . " - quantity: " . $row["quantity"];
+				echo "<div class='main'>" . "&centerdot; item: " . $row["item"] . " - quantity: " . $row["quantity"] . $html . "</div>";
 			}
 		}
 		else{
 			echo "<div class='main'>" . "
 				<div class='listTable'>
 					<p style='color:red'>0 results found</p>
-				</div>
-			" . $html . "</div>";
+				</div>" . $html . "</div>";
 		}
 		$conn->close();
 	?>

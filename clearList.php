@@ -7,9 +7,9 @@
 <body>
 	<?php 
 		$servername = "localhost";
-		$username = "shoppingList";
-		$password = "shopping";
-		$dbname = "shoppinglist";
+		$username = "pwah";
+		$password = "mysql";
+		$dbname = "personal-web-account-hub";
 
 		//Create Connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,12 +19,12 @@
 		}
 
 
-		$sqli = "DELETE FROM list";
+		$sqli = "DELETE FROM shoppingList";
 		$result = $conn->query($sqli);
 
 		$conn->close();
 
-		header("Location: /ShoppingList.php");
+		header("Location: /my_files/PWAH/Personal-Web-Account-Hub/ShoppingList.php");
 	?>
 </body>
 </html>

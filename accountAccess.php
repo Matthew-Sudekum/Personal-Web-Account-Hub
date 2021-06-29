@@ -7,9 +7,9 @@
 <body>
 	<?php 
 		$servername = "localhost";
-		$username = "shoppingList";
-		$password = "shopping";
-		$dbname = "shoppinglist";
+		$username = "pwah";
+		$password = "mysql";
+		$dbname = "personal-web-account-hub";
 
 		//Create Connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,10 +18,27 @@
 			die("Connection error: " . $conn->connect_error);
 		}
 
-		$username = $_POST["username"];
-		$password = $_POST["password"];
+		//Get form data
+		$form_username = $_POST["username"];
+		$form_password = $_POST["password"];
 
-		//Determine action
+		//Validate
+		if($_POST["login"]){
+			$sqli = "SELECT username, password FROM accounts WHERE username = '$form_username' AND password = '$form_password'";
+			$result = $conn->query($sqli);
+			if($result->num_rows == 1){
+				$conn->close();
+				header("Location: /my_files/PWAH/Personal-Web-Account-Hub/ShoppingList.php");
+			}
+			if($result->num_rows == 0){
+				echo "Username or password is incorrect <br>
+					<form action='login.php' method='POST'>
+						<input type='submit' value='Back'>
+					</form>";
+
+			}
+		}
+		/*
 		if($_POST["createAccount"]){
 			if($username == "" and $password != ""){
 				echo "Password can't be blank <br>
@@ -66,24 +83,7 @@
 				}
 			}
 			
-		}
-		if($_POST["login"]){
-			$sqli = "SELECT username, password FROM accounts WHERE username = '$username' AND password = '$password'";
-			$result = $conn->query($sqli);
-			if($result->num_rows == 1){
-				$conn->close();
-				header("Location: /ShoppingList.php");
-			}
-			if($result->num_rows == 0){
-				echo "Username or password is incorrect <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>";
-
-			}
-		}
-
+		}*/
 	?>
 </body>
 </html>

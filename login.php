@@ -11,10 +11,9 @@
 		<input type="text" name="username">
 		<h3>Password</h3>
 		<input type="password" name="password">
-		<h3>Login</h3>
-		<input type="submit" name="login">
-		<h3>Create Account</h3>
-		<input type="submit" name="createAccount">
+		<br>
+		<input type="submit" name="login" value="Login">
+		<a href="createAccount.php"><p style="color:grey">Need an account?</p></a>
 	</form>
 </body>
 </html>
