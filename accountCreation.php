@@ -23,8 +23,7 @@
 			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$password = $_POST['password'];
-
-			$form_element = [$username, $email, $password];
+			
 			$form_data = ['Username' => $username, 'Email' => $email, 'Password' => $password];
 
 			//validate data
