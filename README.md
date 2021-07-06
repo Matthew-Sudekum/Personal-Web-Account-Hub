@@ -1,1 +1,3 @@
 # Personal-Web-Account-Hub
+
+This is currently just an account login/creation system in order to get to a personal shopping list. In the future it will be expanded to be a personal hub to keep track of your personal daily life. Kind of like an anti-social media. However, you will be able to send and receive friend requests for the purpose of sharing a task/event, like a shopping list or calander event, with them or even a group of people so they can contribute to or add to their calanders, respectively.
