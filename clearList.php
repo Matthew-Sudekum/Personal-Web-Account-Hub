@@ -5,7 +5,9 @@
 	<title>Clear List</title>
 </head>
 <body>
-	<?php 
+	<?php
+		session_start();
+
 		$servername = "localhost";
 		$username = "pwah";
 		$password = "mysql";
@@ -18,8 +20,9 @@
 			die("Connection error: " . $conn->connect_error);
 		}
 
+		$form_username = $_SESSION["username"];
 
-		$sqli = "DELETE FROM shoppingList";
+		$sqli = "DELETE FROM shoppingList WHERE account = '$form_username'";
 		$result = $conn->query($sqli);
 
 		$conn->close();

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Account Creation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<?php 
@@ -31,10 +32,7 @@
 			$validate;
 			foreach ($form_data as $key=>$value) {
 				if($value == ""){
-					echo "All fields required<br>
-						<form action='createAccount.php' method='POST'>
-							<input type='submit' value='Back'>
-						</form>";
+					echo "<div class='validation'>All fields required<br><form action='createAccount.php' method='POST'><input type='submit' value='Back'></form></div>";
 					$blankInput = $key;
 					break;
 				}
@@ -45,11 +43,7 @@
 						$sqli = "SELECT 1 FROM `accounts` WHERE `username` = '$username'";
 						$result = $conn->query($sqli);
 						if($result->num_rows == 1){
-							echo "Username already exists<br>
-								<form action='createAccount.php' method='POST'>
-									<input type='submit' value='Back'>
-								</form>
-							";
+							echo "<div class='validation'>Username already exists<br><form action='createAccount.php' method='POST'><input type='submit' value='Back'></form></div>";
 							$validate = "no";
 							break;
 						}
@@ -62,11 +56,7 @@
 						$sqli = "SELECT 1 FROM `accounts` WHERE `email` = '$email'";
 						$result = $conn->query($sqli);
 						if($result->num_rows == 1){
-							echo "Email already exists <br>
-								<form action='createAccount.php' method='POST'>
-									<input type='submit' value='Back'>
-								</form>
-							";
+							echo "<div class='validation'>Email already exists <br><form action='createAccount.php' method='POST'><input type='submit' value='Back'></form></div>";
 							$validate = "no";
 							break;
 						}
@@ -83,10 +73,7 @@
 				if($validate == "yes"){
 					$sqli = "INSERT INTO accounts(username, email, password) VALUES ('$username', '$email', '$password')";
 					$result = $conn->query($sqli);
-					echo "Account created! <br>
-						<form action='login.php' method='POST'>
-							<input type='submit' value='Back'>
-						</form>";
+					echo "<div class='validation'>Account created! <br><form action='index.php' method='POST'><input type='submit' value='Back'></form></div>";
 				}
 				if($validate == "no"){
 					//do nothing else

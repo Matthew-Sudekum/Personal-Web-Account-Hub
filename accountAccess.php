@@ -3,9 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<title>Shopping List Account Login/Creation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<?php 
+		session_start();
+
 		$servername = "localhost";
 		$username = "pwah";
 		$password = "mysql";
@@ -28,62 +31,13 @@
 			$result = $conn->query($sqli);
 			if($result->num_rows == 1){
 				$conn->close();
+				$_SESSION["username"] = $form_username;
 				header("Location: /my_files/PWAH/Personal-Web-Account-Hub/ShoppingList.php");
 			}
 			if($result->num_rows == 0){
-				echo "Username or password is incorrect <br>
-					<form action='login.php' method='POST'>
-						<input type='submit' value='Back'>
-					</form>";
-
+				echo "<div class='validation'>Username or password is incorrect <br><form action='index.php' method='POST'><input type='submit' value='Back'></form></div>";
 			}
 		}
-		/*
-		if($_POST["createAccount"]){
-			if($username == "" and $password != ""){
-				echo "Password can't be blank <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>";
-			}
-			else if($username != "" and $password == ""){
-				echo "Username can't be blank <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>";
-			}
-			else if($username == "" and $password == ""){
-				echo "Username and password can't be blank <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>";
-			}
-			else if($username != "" and $password != ""){
-				$sqli = "SELECT 1 FROM accounts WHERE username = '$username'";
-				$result = $conn->query($sqli);
-				if($result->num_rows == 1){
-					echo "Username already exists <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>
-					";
-				}
-				if($result->num_rows == 0){
-					$sqli = "INSERT INTO accounts (username, password) VALUES ('$username','$password')";
-					$result = $conn->query($sqli);
-					echo "Account created! <br>
-					<form action='login.php' method='POST'>
-						<h3>Back</h3>
-						<input type='submit'>
-					</form>";
-				}
-			}
-			
-		}*/
 	?>
 </body>
 </html>

@@ -6,6 +6,8 @@
 </head>
 <body>
 	<?php 
+		session_start();
+
 		$servername = "localhost";
 		$username = "pwah";
 		$password = "mysql";
@@ -20,8 +22,9 @@
 
 		$item = $_POST["item"];
 		$quantity = $_POST["quantity"];
+		$form_username = $_SESSION["username"];
 
-		$sqli = "INSERT INTO shoppingList (item, quantity) values ('$item', '$quantity')";
+		$sqli = "INSERT INTO shoppingList (item, quantity, account) values ('$item', '$quantity', '$form_username')";
 		$result = $conn->query($sqli);
 
 		$conn->close();
