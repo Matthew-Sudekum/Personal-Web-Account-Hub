@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Clear List</title>
+	<title>Remove Item</title>
 </head>
 <body>
-	<?php
+	<?php 
 		session_start();
 
 		$servername = "localhost";
@@ -19,9 +19,10 @@
 			die("Connection error: " . $conn->connect_error);
 		}
 
+		$item = $_POST["item"];
 		$form_username = $_SESSION["username"];
 
-		$sqli = "DELETE FROM shoppingList WHERE username = '$form_username'";
+		$sqli = "DELETE FROM shoppingList where item = '$item' AND username = '$form_username'";
 		$result = $conn->query($sqli);
 
 		$conn->close();

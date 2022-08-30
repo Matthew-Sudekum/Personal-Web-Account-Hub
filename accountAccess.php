@@ -2,7 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<title>Shopping List Account Login/Creation</title>
+	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -32,7 +34,7 @@
 			if($result->num_rows == 1){
 				$conn->close();
 				$_SESSION["username"] = $form_username;
-				header("Location: /my_files/PWAH/Personal-Web-Account-Hub/ShoppingList.php");
+				header("Location: /Personal-Web-Account-Hub/ShoppingList.php");
 			}
 			if($result->num_rows == 0){
 				echo "<div class='validation'>Username or password is incorrect <br><form action='index.php' method='POST'><input type='submit' value='Back'></form></div>";

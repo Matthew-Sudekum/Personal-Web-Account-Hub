@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<title>Add To List</title>
 </head>
 <body>
@@ -24,12 +23,12 @@
 		$quantity = $_POST["quantity"];
 		$form_username = $_SESSION["username"];
 
-		$sqli = "INSERT INTO shoppingList (item, quantity, account) values ('$item', '$quantity', '$form_username')";
+		$sqli = "INSERT INTO shoppingList (item, quantity, username) values ('$item', '$quantity', '$form_username')";
 		$result = $conn->query($sqli);
 
 		$conn->close();
 
-		header("Location: /my_files/PWAH/Personal-Web-Account-Hub/ShoppingList.php");
+		header("Location: /Personal-Web-Account-Hub/ShoppingList.php");
 	?>
 </body>
 </html>
